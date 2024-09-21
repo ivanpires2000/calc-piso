@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Pisos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100%;
+            max-width: 200px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        canvas {
+            margin-top: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Pisos e Revestimentos</h1>
+
+    <form id="calcForm">
+        <label for="larguraAmbiente">Largura do Ambiente (m):</label>
+        <input type="number" id="larguraAmbiente" step="0.01" required>
+
+        <label for="comprimentoAmbiente">Comprimento do Ambiente (m):</label>
+        <input type="number" id="comprimentoAmbiente" step="0.01" required>
+
+        <label for="larguraPeca">Largura da Peça de Cerâmica (m):</label>
+        <input type="number" id="larguraPeca" step="0.01" required>
+
+        <label for="comprimentoPeca">Comprimento da Peça de Cerâmica (m):</label>
+        <input type="number" id="comprimentoPeca" step="0.01" required>
+
+        <button type="button" onclick="calcular()">Calcular</button>
+    </form>
+
+    <h2>Resultado</h2>
+    <p id="resultado"></p>
+
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
