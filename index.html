@@ -3,62 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Pisos</title>
+    <title>Calculadora de Pisos e Revestimentos</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input {
-            margin-bottom: 10px;
-            padding: 5px;
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
             width: 100%;
-            max-width: 200px;
+            margin: 20px;
         }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+        }
+
         button {
-            padding: 10px 15px;
+            padding: 10px;
+            font-size: 16px;
             background-color: #28a745;
             color: white;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
+
         button:hover {
             background-color: #218838;
         }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Ajuste do canvas */
         canvas {
             margin-top: 20px;
-            border: 1px solid black;
+            border: 2px solid #ddd;
+            width: 100%; /* Faz o canvas ocupar toda a largura disponível */
+            height: auto; /* Ajusta a altura automaticamente */
+            max-width: 500px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            input, button {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            #resultado {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            input, button {
+                font-size: 13px;
+                padding: 7px;
+            }
+
+            #resultado {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>Calculadora de Pisos e Revestimentos</h1>
+    <div class="container">
+        <h1>Calculadora de Pisos e Revestimentos</h1>
 
-    <form id="calcForm">
-        <label for="larguraAmbiente">Largura do Ambiente (m):</label>
-        <input type="number" id="larguraAmbiente" step="0.01" required>
+        <form id="calcForm">
+            <label for="larguraAmbiente">Largura do Ambiente (m):</label>
+            <input type="number" id="larguraAmbiente" step="0.01" required>
 
-        <label for="comprimentoAmbiente">Comprimento do Ambiente (m):</label>
-        <input type="number" id="comprimentoAmbiente" step="0.01" required>
+            <label for="comprimentoAmbiente">Comprimento do Ambiente (m):</label>
+            <input type="number" id="comprimentoAmbiente" step="0.01" required>
 
-        <label for="larguraPeca">Largura da Peça de Cerâmica (m):</label>
-        <input type="number" id="larguraPeca" step="0.01" required>
+            <label for="larguraPeca">Largura da Peça de Cerâmica (m):</label>
+            <input type="number" id="larguraPeca" step="0.01" required>
 
-        <label for="comprimentoPeca">Comprimento da Peça de Cerâmica (m):</label>
-        <input type="number" id="comprimentoPeca" step="0.01" required>
+            <label for="comprimentoPeca">Comprimento da Peça de Cerâmica (m):</label>
+            <input type="number" id="comprimentoPeca" step="0.01" required>
 
-        <button type="button" onclick="calcular()">Calcular</button>
-    </form>
+            <button type="button" onclick="calcular()">Calcular</button>
+        </form>
 
-    <h2>Resultado</h2>
-    <p id="resultado"></p>
+        <h2 id="resultado"></h2>
 
-    <canvas id="canvas" width="500" height="500"></canvas>
+        <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
 
     <script src="script.js"></script>
 
