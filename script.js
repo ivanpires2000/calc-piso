@@ -49,6 +49,7 @@ function desenharPaginacao(larguraAmbiente, comprimentoAmbiente, larguraPeca, co
             let x = i * larguraPeca * escala;
             let y = j * comprimentoPeca * escala;
             ctx.fillRect(x, y, larguraPeca * escala, comprimentoPeca * escala);
+            ctx.strokeRect(x, y, larguraPeca * escala, comprimentoPeca * escala); // Adiciona bordas para visualizar as peças
         }
     }
 
@@ -62,6 +63,7 @@ function desenharPaginacao(larguraAmbiente, comprimentoAmbiente, larguraPeca, co
             let x = numPecasLargura * larguraPeca * escala;
             let y = j * comprimentoPeca * escala;
             ctx.fillRect(x, y, sobraLargura * escala, comprimentoPeca * escala);
+            ctx.strokeRect(x, y, sobraLargura * escala, comprimentoPeca * escala);
         }
     }
 
@@ -71,6 +73,7 @@ function desenharPaginacao(larguraAmbiente, comprimentoAmbiente, larguraPeca, co
             let x = i * larguraPeca * escala;
             let y = numPecasComprimento * comprimentoPeca * escala;
             ctx.fillRect(x, y, larguraPeca * escala, sobraComprimento * escala);
+            ctx.strokeRect(x, y, larguraPeca * escala, sobraComprimento * escala);
         }
     }
 
@@ -79,5 +82,21 @@ function desenharPaginacao(larguraAmbiente, comprimentoAmbiente, larguraPeca, co
         let x = numPecasLargura * larguraPeca * escala;
         let y = numPecasComprimento * comprimentoPeca * escala;
         ctx.fillRect(x, y, sobraLargura * escala, sobraComprimento * escala);
+        ctx.strokeRect(x, y, sobraLargura * escala, sobraComprimento * escala);
     }
+
+    // Desenha as medidas da largura e comprimento no layout
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#000";
+    ctx.textAlign = "center";
+
+    // Medida de largura na parte superior
+    ctx.fillText(`Largura: ${larguraAmbiente}m`, larguraEscalada / 2, 20);
+
+    // Medida de comprimento no lado esquerdo
+    ctx.save(); // Salva o estado do contexto
+    ctx.translate(20, comprimentoEscalado / 2); // Move a origem do contexto
+    ctx.rotate(-Math.PI / 2); // Rotaciona o texto
+    ctx.fillText(`Comprimento: ${comprimentoAmbiente}m`, 0, 0);
+    ctx.restore(); // Restaura o estado original do contexto
 }
