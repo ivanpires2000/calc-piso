@@ -4,7 +4,7 @@ function calcular() {
     let comprimentoAmbiente = parseFloat(document.getElementById('comprimentoAmbiente').value);
     let larguraPeca = parseFloat(document.getElementById('larguraPeca').value);
     let comprimentoPeca = parseFloat(document.getElementById('comprimentoPeca').value);
-
+    
     // Verifica se todos os valores foram preenchidos corretamente
     if (!larguraAmbiente || !comprimentoAmbiente || !larguraPeca || !comprimentoPeca) {
         alert("Por favor, preencha todos os campos.");
@@ -18,6 +18,11 @@ function calcular() {
 
     // Exibe o resultado
     document.getElementById('resultado').innerText = `Você precisará de aproximadamente ${numPecas} peças de cerâmica.`;
+
+    // Cálculo de argamassa
+    let areaCoberturaArgamassa = 4.5; // Área coberta por um saco de argamassa em m²
+    let numSacosArgamassa = Math.ceil(areaAmbiente / areaCoberturaArgamassa);
+    document.getElementById('resultado').innerText += `\nVocê precisará de aproximadamente ${numSacosArgamassa} sacos de argamassa de 20kg.`;
 
     // Gera a visualização da paginação no Canvas
     desenharPaginacao(larguraAmbiente, comprimentoAmbiente, larguraPeca, comprimentoPeca);
