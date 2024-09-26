@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5330158575633268"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Pisos e Revestimentos</title>
@@ -17,11 +15,19 @@
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             color: #333;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .layout {
+            display: flex;
+            justify-content: flex-start; /* Alinha os itens à esquerda */
+            align-items: flex-start;
+            max-width: 1200px;
+            width: 100%;
+            margin: 20px auto;
+            flex-grow: 1;
         }
 
         .container {
@@ -31,7 +37,22 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             width: 100%;
-            margin: 20px;
+        }
+
+        .qr-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 250px; /* Reduzi o tamanho máximo para aproximar os itens */
+            width: 100%;
+            margin-left: 5px; /* Reduzido ainda mais para aproximar o QR code */
+            text-align: center;
+        }
+        
+        .qr-container img {
+            max-width: 100%;
+            height: auto;
         }
 
         h1 {
@@ -86,13 +107,34 @@
             margin-top: 20px;
             border: 2px solid #ddd;
             display: block;
-            width: 100%; /* Faz o canvas ocupar toda a largura disponível */
-            height: auto; /* Ajusta a altura automaticamente */
+            width: 100%;
+            height: auto;
             max-width: 500px;
             margin: 20px auto;
         }
 
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #fff;
+            width: 100%;
+            flex-shrink: 0; /* Garante que o rodapé fique no final da página */
+        }
+
         @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .qr-container {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
             .container {
                 padding: 15px;
             }
@@ -137,45 +179,47 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Calculadora de Pisos e Revestimentos</h1>
+    <div class="layout">
+        <!-- Coluna principal com o formulário e resultado -->
+        <div class="container">
+            <h1>Calculadora de Pisos e Revestimentos</h1>
 
-        <form id="calcForm">
-            <label for="larguraAmbiente">Largura do Ambiente (m):</label>
-            <input type="number" id="larguraAmbiente" step="0.01" required>
+            <form id="calcForm">
+                <label for="larguraAmbiente">Largura do Ambiente (m):</label>
+                <input type="number" id="larguraAmbiente" step="0.01" required>
 
-            <label for="comprimentoAmbiente">Comprimento do Ambiente (m):</label>
-            <input type="number" id="comprimentoAmbiente" step="0.01" required>
+                <label for="comprimentoAmbiente">Comprimento do Ambiente (m):</label>
+                <input type="number" id="comprimentoAmbiente" step="0.01" required>
 
-            <label for="larguraPeca">Largura da Peça de Cerâmica (m):</label>
-            <input type="number" id="larguraPeca" step="0.01" required>
+                <label for="larguraPeca">Largura da Peça de Cerâmica (m):</label>
+                <input type="number" id="larguraPeca" step="0.01" required>
 
-            <label for="comprimentoPeca">Comprimento da Peça de Cerâmica (m):</label>
-            <input type="number" id="comprimentoPeca" step="0.01" required>
+                <label for="comprimentoPeca">Comprimento da Peça de Cerâmica (m):</label>
+                <input type="number" id="comprimentoPeca" step="0.01" required>
 
-            <button type="button" onclick="calcular()">Calcular</button>
-        </form>
+                <button type="button" onclick="calcular()">Calcular</button>
+            </form>
 
-        <h2 id="resultado"></h2>
+            <h2 id="resultado"></h2>
 
-        <canvas id="canvas" width="500" height="500"></canvas>
+            <canvas id="canvas" width="500" height="500"></canvas>
+        </div>
+
+        <!-- Coluna à direita com o QR code -->
+        <div class="qr-container">
+            <h2>Doação via Pix</h2>
+            <p>Me ajude a continuar criando conteúdo de qualidade</p>
+            <p>Chave Pix: 11 94028-0808</p>
+            <img src="/qr-ivan.jpg" alt="QR Code para doação via Pix">
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Rodapé com Copy -->
+    <footer>
+        Copy © 2024 Ivan P. S. Ferreira
+    </footer>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5330158575633268"
-     crossorigin="anonymous"></script>
-<!-- calc -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5330158575633268"
-     data-ad-slot="3400173705"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<p>₢ 2024 Ivan P.S. Ferreira<p/>>
+    <script src="script.js"></script>
 
 </body>
 </html>
